@@ -2,7 +2,7 @@ import AgoraRTM from 'agora-rtm-sdk';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
-const APP_ID = '452f99a0814b44d29d9a446ec20356fc';
+const APP_ID = '487e3d77d0c14638af6bdcab87f10af2';
 const CHANNEL = 'wdj';
 
 let client = AgoraRTM.createInstance(APP_ID);
@@ -47,8 +47,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    messagesRef.current.scrollTop =
-      messagesRef.current.scrollHeight;
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
   }, [messages]);
 
   const sendMessage = (e) => {
@@ -64,32 +63,21 @@ export default function App() {
 
   return (
     <main>
-      <div className="panel">
-        <div className="messages" ref={messagesRef}>
-          <div className="inner">
+      <div className='panel'>
+        <div className='messages' ref={messagesRef}>
+          <div className='inner'>
             {messages.map((message, idx) => (
-              <div key={idx} className="message">
-                {message.uid === uid && (
-                  <div className="user-self">
-                    You:&nbsp;
-                  </div>
-                )}
-                {message.uid !== uid && (
-                  <div className="user-them">
-                    Them:&nbsp;
-                  </div>
-                )}
-                <div className="text">{message.text}</div>
+              <div key={idx} className='message'>
+                {message.uid === uid && <div className='user-self'>You:&nbsp;</div>}
+                {message.uid !== uid && <div className='user-them'>Them:&nbsp;</div>}
+                <div className='text'>{message.text}</div>
               </div>
             ))}
           </div>
         </div>
 
         <form onSubmit={sendMessage}>
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
+          <input value={text} onChange={(e) => setText(e.target.value)} />
           <button>+</button>
         </form>
       </div>
